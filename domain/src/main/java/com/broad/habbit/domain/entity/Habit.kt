@@ -1,5 +1,7 @@
 package com.broad.habbit.domain.entity
 
+import com.broad.habbit.domain.factory.DailyHabit
+
 
 interface HabitBuilder {
     fun setName(name: String): HabitBuilder
@@ -26,8 +28,8 @@ data class Habit(
         override fun setName(name: String) = apply { this.name = name }
         override fun setDescription(description: String) = apply { this.description = description }
         override fun setCategory(category: HabitCategory) = apply { this.category = category }
-        override fun setHabitInitiation(initiation: String): HabitBuilder = apply { this.habitInitiation = initiation }
-        override fun setHabitFrequency(frequency: HabitFrequency): HabitBuilder = apply { this.frequency = frequency }
+        override fun setHabitInitiation(initiation: String) = apply { this.habitInitiation = initiation }
+        override fun setHabitFrequency(frequency: HabitFrequency) = apply { this.frequency = frequency }
 
         fun build(): Habit {
             return Habit(
@@ -44,5 +46,3 @@ data class Habit(
 
 enum class HabitCategory { LESSON, STUDY, WORK, NONE }
 enum class HabitFrequency { DAILY, WEEKLY, MONTHLY, NONE }
-
-
