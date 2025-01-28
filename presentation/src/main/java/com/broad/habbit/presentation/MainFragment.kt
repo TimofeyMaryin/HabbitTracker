@@ -1,5 +1,6 @@
 package com.broad.habbit.presentation
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,11 +21,11 @@ import com.broad.habbit.presentation.vms.HabitViewModel
 
 @Composable
 fun MainFragment() {
-    var currentSizeListHabits = mutableListOf<Habit>()
     val viewModel: HabitViewModel = HabitViewModel()
 
     LaunchedEffect(key1 = Unit, key2 = viewModel.triggerMainFragment) {
-        currentSizeListHabits = viewModel.getAllHabits().toMutableList()
+        Log.e("TAG", "MainFragment: UPDATE", )
+        // currentSizeListHabits = viewModel.getAllHabits().toMutableList()
     }
 
 
@@ -63,7 +64,9 @@ fun MainFragment() {
 
             Button(
                 onClick = {
-                    viewModel.removeHabit(MonthlyHabit().create("Mont", description = "", category = HabitCategory.WORK, habitInitiation = ""))
+                    viewModel.removeHabit(
+                        viewModel.getAllHabits().last()
+                    )
                 }
             ) {
                 Text(text = "Remove Last Habit")
