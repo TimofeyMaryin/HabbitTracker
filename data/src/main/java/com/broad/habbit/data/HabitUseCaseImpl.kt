@@ -14,6 +14,7 @@ object HabitUseCaseImpl : HabitUseCase {
         if (habits.contains(this)) {
             val index = habits.indexOf(this)
             habits[index] = newHabit
+            return
         } else {
             throw IllegalArgumentException("Cannot find current element")
         }
@@ -22,6 +23,7 @@ object HabitUseCaseImpl : HabitUseCase {
     override fun Habit.removeHabit() {
         if (habits.contains(this)) {
             habits.remove(this)
+            return
         } else {
             throw IllegalArgumentException("Cannot find current element")
         }
