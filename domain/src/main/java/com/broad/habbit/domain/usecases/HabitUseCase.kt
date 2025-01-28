@@ -4,8 +4,9 @@ import com.broad.habbit.domain.entity.Habit
 
 interface HabitUseCase {
 
-    fun Habit.addHabit()
-    fun Habit.editHabit(newHabit: Habit)
-    fun Habit.removeHabit()
+    fun getAllHabits(): List<Habit>
+    fun addHabit(newHabit: Habit)
+    fun editHabit(currentHabit: Habit, newHabit: Habit)
+    fun removeHabit(currentHabit: Habit)
 
 }

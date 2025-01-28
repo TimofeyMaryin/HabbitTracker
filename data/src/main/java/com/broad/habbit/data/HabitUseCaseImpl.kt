@@ -6,13 +6,16 @@ import com.broad.habbit.domain.usecases.HabitUseCase
 
 object HabitUseCaseImpl : HabitUseCase {
     private var habits = mutableListOf<Habit>()
+    override fun getAllHabits(): List<Habit> {
+        return habits
+    }
 
-    override fun Habit.addHabit() { habits.add(this) }
+    override fun addHabit(newHabit: Habit) { habits.add(newHabit) }
 
-    override fun Habit.editHabit(newHabit: Habit) {
+    override fun editHabit(currentHabit: Habit, newHabit: Habit) {
 
-        if (habits.contains(this)) {
-            val index = habits.indexOf(this)
+        if (habits.contains(currentHabit)) {
+            val index = habits.indexOf(currentHabit)
             habits[index] = newHabit
             return
         } else {
@@ -20,9 +23,9 @@ object HabitUseCaseImpl : HabitUseCase {
         }
     }
 
-    override fun Habit.removeHabit() {
-        if (habits.contains(this)) {
-            habits.remove(this)
+    override fun removeHabit(currentHabit: Habit) {
+        if (habits.contains(currentHabit)) {
+            habits.remove(currentHabit)
             return
         } else {
             throw IllegalArgumentException("Cannot find current element")
