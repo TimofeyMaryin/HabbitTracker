@@ -7,17 +7,26 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.broad.habbit.domain.entity.Habit
 import com.broad.habbit.domain.entity.HabitCategory
 import com.broad.habbit.domain.factory.DailyHabit
+import com.broad.habbit.domain.factory.MonthlyHabit
 import com.broad.habbit.domain.factory.WeeklyHabit
 import com.broad.habbit.presentation.vms.HabitViewModel
 
 @Composable
 fun MainFragment() {
+    var currentSizeListHabits = mutableListOf<Habit>()
     val viewModel: HabitViewModel = HabitViewModel()
+
+    LaunchedEffect(key1 = Unit, key2 = viewModel.triggerMainFragment) {
+        currentSizeListHabits = viewModel.getAllHabits().toMutableList()
+    }
+
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -54,7 +63,7 @@ fun MainFragment() {
 
             Button(
                 onClick = {
-                    viewModel.removeHabit(viewModel.getAllHabits().last())
+                    viewModel.removeHabit(MonthlyHabit().create("Mont", description = "", category = HabitCategory.WORK, habitInitiation = ""))
                 }
             ) {
                 Text(text = "Remove Last Habit")
