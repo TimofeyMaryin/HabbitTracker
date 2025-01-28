@@ -8,6 +8,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.broad.habbit.presentation.R
 import com.broad.habbit.presentation.theme.white
@@ -32,6 +33,8 @@ enum class TextSize {
 fun AppText(
     value: String,
     size: TextSize,
+    fontWeight: FontWeight = FontWeight.Normal,
+    textAlign: TextAlign = TextAlign.Start,
 ) {
     Text(
         text = value,
@@ -41,7 +44,10 @@ fun AppText(
             TextSize.TITLE_REGULAR -> 40.sp
             TextSize.BODY_LARGE -> 25.sp
             TextSize.BODY_REGULAR -> 20.sp
-        }
+        },
+        textAlign = textAlign,
+        fontFamily = fontFamily,
+        fontWeight = fontWeight,
     )
 
 }
