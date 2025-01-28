@@ -1,6 +1,5 @@
 package com.broad.habbit.presentation.component
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -20,7 +19,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.broad.habbit.domain.entity.IMenuViewBehavior
+import com.broad.habbit.domain.entity.MenuViewBehavior
 import com.broad.habbit.domain.entity.MenuViewField
 import com.broad.habbit.presentation.R
 import com.broad.habbit.presentation.theme.containerColor
@@ -30,7 +29,7 @@ import com.broad.habbit.presentation.theme.primaryBorderBrush
 
 
 
-class MenuViewBehaviorDirector(private var builder: IMenuViewBehavior) {
+class MenuViewBehaviorDirector(private var builder: MenuViewBehavior) {
 
     fun createDailyMenuView(name: String): MenuViewField {
         return builder

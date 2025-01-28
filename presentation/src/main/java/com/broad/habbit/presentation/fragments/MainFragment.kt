@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.broad.habbit.domain.entity.MenuViewBehaviorImpl
+import com.broad.habbit.domain.entity.MenuViewField
 import com.broad.habbit.presentation.R
 import com.broad.habbit.presentation.component.AppText
 import com.broad.habbit.presentation.component.MAX_SCREEN_USAGE
@@ -24,7 +24,7 @@ import com.broad.habbit.presentation.component.TextSize
 
 @Composable
 fun MainFragment() {
-    val menuViewBehaviorImpl = MenuViewBehaviorImpl()
+    val menuViewBehaviorImpl = MenuViewField.Builder()
     val menuViewBehaviorDirector = MenuViewBehaviorDirector(builder = menuViewBehaviorImpl)
 
 
