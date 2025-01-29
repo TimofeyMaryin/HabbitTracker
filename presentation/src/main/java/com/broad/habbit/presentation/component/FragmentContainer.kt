@@ -1,6 +1,7 @@
 package com.broad.habbit.presentation.component
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import com.broad.habbit.presentation.R
+import com.broad.habbit.presentation.theme.backgroundColor
 
 @Composable
 fun FragmentContainer(
@@ -31,6 +33,7 @@ fun FragmentContainer(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
+                    .background(backgroundColor)
                     .weight(1f),
                 contentAlignment = Alignment.Center,
             ) {

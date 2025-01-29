@@ -1,9 +1,7 @@
 package com.broad.habbit.presentation.component
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
@@ -15,7 +13,7 @@ import com.broad.habbit.presentation.theme.white
 
 
 
-private val fontFamily = FontFamily(
+val fontFamily = FontFamily(
     listOf(
         Font(R.font.ff_regular),
         Font(R.font.ff_bold, weight = FontWeight.Bold),

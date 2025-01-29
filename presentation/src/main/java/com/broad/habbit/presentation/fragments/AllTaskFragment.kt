@@ -37,7 +37,7 @@ fun AllTaskFragment(
                         navController.popBackStack()
                     }
                     
-                    AppText(value = "Все привычки", size = TextSize.TITLE_REGULAR)
+                    AppText(value = "Все привычки", size = TextSize.BODY_REGULAR)
                 }
 
                 AddHabitButton {
@@ -46,7 +46,7 @@ fun AllTaskFragment(
             }
         }
     ) {
-
+        AppText(value = viewModel.getAllHabits().joinToString(" | "), size = TextSize.BODY_REGULAR)
     }
 
 }
