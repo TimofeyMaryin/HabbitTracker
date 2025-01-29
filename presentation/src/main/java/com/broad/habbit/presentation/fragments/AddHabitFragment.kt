@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.broad.habbit.domain.entity.HabitCategory
 import com.broad.habbit.domain.factory.DailyHabit
+import com.broad.habbit.domain.getCurrentDate
 import com.broad.habbit.presentation.component.AppText
 import com.broad.habbit.presentation.component.AppTextField
 import com.broad.habbit.presentation.component.CategoryView
@@ -62,8 +63,8 @@ fun AddHabitFragment(
                             DailyHabit().create(
                                 name = habitName,
                                 description = habitDescription,
-                                category = habitCategory, // изменить
-                                habitInitiation = "00:00" // изменить
+                                category = habitCategory,
+                                habitInitiation = getCurrentDate()
                             )
                         )
                         navController.popBackStack()

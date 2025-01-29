@@ -25,6 +25,7 @@ class DailyHabit : HabitFactory {
             .setDescription(description)
             .setCategory(category)
             .setHabitFrequency(frequency = HabitFrequency.DAILY)
+            .setHabitInitiation(habitInitiation)
             .build()
     }
 }
