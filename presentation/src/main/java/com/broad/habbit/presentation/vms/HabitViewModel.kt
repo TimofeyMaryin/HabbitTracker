@@ -6,10 +6,12 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.broad.habbit.data.HabitUseCaseImpl
 import com.broad.habbit.domain.entity.Habit
+import com.broad.habbit.domain.entity.HabitFrequency
+import com.broad.habbit.domain.factory.DailyHabit
 import com.broad.habbit.domain.usecases.HabitUseCase
 
 class HabitViewModel: ViewModel(), HabitUseCase {
-    var triggerMainFragment by mutableIntStateOf(0)
+    private var triggerMainFragment by mutableIntStateOf(0)
 
     override fun addHabit(newHabit: Habit) {
         HabitUseCaseImpl.addHabit(newHabit)

@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -16,13 +15,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.broad.habbit.domain.entity.Habit
 import com.broad.habbit.domain.entity.HabitCategory
-import com.broad.habbit.domain.factory.DailyHabit
+import com.broad.habbit.domain.entity.HabitFrequency
 import com.broad.habbit.domain.getCurrentDate
 import com.broad.habbit.presentation.component.AppText
 import com.broad.habbit.presentation.component.AppTextField
 import com.broad.habbit.presentation.component.CategoryView
 import com.broad.habbit.presentation.component.FragmentContainer
+import com.broad.habbit.presentation.component.FrequencyView
 import com.broad.habbit.presentation.component.TextSize
 import com.broad.habbit.presentation.component.button.AddHabitButton
 import com.broad.habbit.presentation.component.button.AppIconButton
@@ -36,6 +37,7 @@ fun AddHabitFragment(
     var habitName by remember { mutableStateOf("") }
     var habitDescription by remember { mutableStateOf("") }
     var habitCategory by remember { mutableStateOf(HabitCategory.NONE) }
+    var habitFrequency by remember { mutableStateOf(HabitFrequency.DAILY) }
 
     FragmentContainer(
         topBar = {
@@ -56,16 +58,20 @@ fun AddHabitFragment(
                 }
 
                 AnimatedVisibility(
-                    visible = habitName.isNotEmpty() && habitDescription.isNotEmpty()
+                    visible =
+                    habitName.isNotEmpty() &&
+                            habitDescription.isNotEmpty() &&
+                            habitFrequency != HabitFrequency.NONE
                 ) {
                     AddHabitButton {
                         viewModel.addHabit(
-                            DailyHabit().create(
-                                name = habitName,
-                                description = habitDescription,
-                                category = habitCategory,
-                                habitInitiation = getCurrentDate()
-                            )
+                            Habit.Builder()
+                                .setName(habitName)
+                                .setDescription(habitDescription)
+                                .setHabitInitiation(getCurrentDate())
+                                .setHabitFrequency(habitFrequency)
+                                .setCategory(habitCategory)
+                                .build()
                         )
                         navController.popBackStack()
                     }
@@ -90,6 +96,10 @@ fun AddHabitFragment(
 
             CategoryView(currentCategory = habitCategory) {
                 habitCategory = it
+            }
+
+            FrequencyView(currentFrequency = habitFrequency) {
+
             }
         }
 

@@ -1,6 +1,5 @@
 package com.broad.habbit.data
 
-import android.util.Log
 import com.broad.habbit.domain.entity.Habit
 import com.broad.habbit.domain.usecases.HabitUseCase
 
