@@ -3,6 +3,7 @@ package com.broad.habbit.presentation.component
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -32,7 +33,7 @@ fun AppTextField(
             textStyle = TextStyle(
                 fontFamily = fontFamily,
             ),
-
+            shape = MaterialTheme.shapes.medium,
         )
     }
 

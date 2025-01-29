@@ -20,6 +20,7 @@ import com.broad.habbit.domain.entity.HabitCategory
 import com.broad.habbit.domain.factory.DailyHabit
 import com.broad.habbit.presentation.component.AppText
 import com.broad.habbit.presentation.component.AppTextField
+import com.broad.habbit.presentation.component.CategoryView
 import com.broad.habbit.presentation.component.FragmentContainer
 import com.broad.habbit.presentation.component.TextSize
 import com.broad.habbit.presentation.component.button.AddHabitButton
@@ -84,6 +85,10 @@ fun AddHabitFragment(
             
             AppTextField(placeholder = "Описание привычки", value = habitDescription) {
                 habitDescription = it
+            }
+
+            CategoryView(currentCategory = habitCategory) {
+                habitCategory = it
             }
         }
 
