@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.broad.habbit.presentation.InitFragment
+import com.broad.habbit.presentation.fragments.AddHabitFragment
 import com.broad.habbit.presentation.fragments.AllTaskFragment
 import com.broad.habbit.presentation.fragments.CalendarFragment
 import com.broad.habbit.presentation.fragments.DailyTaskFragment
@@ -23,7 +24,7 @@ fun ApplicationNavigation() {
         this.composable(
             route = Screen.MainScreen.route
         ) {
-            MainFragment()
+            MainFragment(navController = navController)
         }
 
         this.composable(
@@ -35,13 +36,19 @@ fun ApplicationNavigation() {
         this.composable(
             route = Screen.AllTasksScreen.route
         ) {
-            AllTaskFragment(viewModel = viewModel)
+            AllTaskFragment(viewModel = viewModel, navController = navController)
         }
 
         this.composable(
             route = Screen.DailyTaskScreen.route
         ) {
             DailyTaskFragment(viewModel = viewModel)
+        }
+
+        this.composable(
+            route = Screen.AddHabitScreen.route
+        ) {
+            AddHabitFragment(navController = navController, viewModel = viewModel)
         }
     }
 }

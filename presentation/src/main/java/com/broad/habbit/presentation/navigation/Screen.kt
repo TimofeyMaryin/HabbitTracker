@@ -5,4 +5,5 @@ sealed class Screen(val route: String) {
     data object DailyTaskScreen : Screen("daily-task-screen")
     data object AllTasksScreen : Screen("all-task-screen")
     data object CalendarScreen : Screen("calendar-screen")
+    data object AddHabitScreen : Screen("add-habit-screen")
 }
