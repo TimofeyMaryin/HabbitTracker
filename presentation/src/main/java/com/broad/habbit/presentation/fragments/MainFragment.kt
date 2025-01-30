@@ -70,6 +70,7 @@ fun MainFragment(
             ) {
 
                 MenuView(model = menuViewBehaviorDirector.createDailyMenuView("28 Jan")) {
+                    navController.navigate(Screen.DailyHabitScreen.route)
                     Log.e("TAG", "MainFragment createDailyMenuView: ${menuViewBehaviorDirector.createDailyMenuView("28 Jan")}", )
                 }
 
@@ -81,6 +82,7 @@ fun MainFragment(
 
                 MenuView(model = menuViewBehaviorDirector.createCalendarMenuView()) {
                     Log.e("TAG", "MainFragment createCalendarMenuView: ${menuViewBehaviorDirector.createCalendarMenuView()}", )
+
                 }
 
             }

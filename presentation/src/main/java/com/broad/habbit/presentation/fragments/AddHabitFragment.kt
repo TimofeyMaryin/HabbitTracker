@@ -99,7 +99,7 @@ fun AddHabitFragment(
             }
 
             FrequencyView(currentFrequency = habitFrequency) {
-
+                habitFrequency = it
             }
         }
 
