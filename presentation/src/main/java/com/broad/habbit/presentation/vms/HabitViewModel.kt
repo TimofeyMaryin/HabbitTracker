@@ -11,7 +11,7 @@ import com.broad.habbit.domain.factory.DailyHabit
 import com.broad.habbit.domain.usecases.HabitUseCase
 
 class HabitViewModel: ViewModel(), HabitUseCase {
-    private var triggerMainFragment by mutableIntStateOf(0)
+    var triggerMainFragment by mutableIntStateOf(0)
 
     override fun addHabit(newHabit: Habit) {
         HabitUseCaseImpl.addHabit(newHabit)

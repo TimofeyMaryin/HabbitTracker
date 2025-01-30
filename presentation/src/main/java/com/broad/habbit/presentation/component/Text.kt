@@ -2,6 +2,7 @@ package com.broad.habbit.presentation.component
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
@@ -31,12 +32,14 @@ enum class TextSize {
 fun AppText(
     value: String,
     size: TextSize,
+    color: Color = white,
     fontWeight: FontWeight = FontWeight.Normal,
     textAlign: TextAlign = TextAlign.Start,
+    fontStyle: FontStyle = FontStyle.Normal,
 ) {
     Text(
         text = value,
-        color = white,
+        color = color,
         fontSize = when (size) {
             TextSize.TITLE_LARGE -> 48.sp
             TextSize.TITLE_REGULAR -> 40.sp
@@ -46,6 +49,7 @@ fun AppText(
         textAlign = textAlign,
         fontFamily = fontFamily,
         fontWeight = fontWeight,
+        fontStyle = fontStyle
     )
 
 }
