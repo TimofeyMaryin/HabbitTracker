@@ -6,11 +6,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.broad.habbit.domain.entity.Habit
 import com.broad.habbit.domain.entity.HabitCategory
 import com.broad.habbit.domain.filterHabitByCategory
 import com.broad.habbit.presentation.component.button.AppIconButton
@@ -27,11 +29,13 @@ fun AllTaskFragment(
     viewModel: HabitViewModel,
     navController: NavController,
 ) {
-    var habits = remember { viewModel.getAllHabits().toMutableList() }
+    val habits = remember { mutableStateListOf<Habit>() }
 
-    LaunchedEffect(key1 = viewModel.triggerMainFragment) {
-        habits = viewModel.getAllHabits().toMutableList()
+    LaunchedEffect(key1 = Unit, key2 = viewModel.triggerMainFragment) {
+        habits.clear()
+        habits.addAll(viewModel.getAllHabits())
     }
+
 
     FragmentContainer(
         topBar = {
@@ -73,6 +77,7 @@ fun AllTaskFragment(
                         navController.navigate(Screen.EditHabitScreen.route)
                     }
                 ) {
+                    habits.remove(it)
                     viewModel.removeHabit(it)
                 }
             }
@@ -85,6 +90,7 @@ fun AllTaskFragment(
                         navController.navigate(Screen.EditHabitScreen.route)
                     }
                 ) {
+                    habits.remove(it)
                     viewModel.removeHabit(it)
                 }
             }
@@ -97,6 +103,7 @@ fun AllTaskFragment(
                         navController.navigate(Screen.EditHabitScreen.route)
                     }
                 ) {
+                    habits.remove(it)
                     viewModel.removeHabit(it)
                 }
             }
