@@ -9,6 +9,7 @@ import com.broad.habbit.presentation.fragments.AddHabitFragment
 import com.broad.habbit.presentation.fragments.AllTaskFragment
 import com.broad.habbit.presentation.fragments.CalendarFragment
 import com.broad.habbit.presentation.fragments.DailyTaskFragment
+import com.broad.habbit.presentation.fragments.EditHabitScreen
 import com.broad.habbit.presentation.fragments.MainFragment
 import com.broad.habbit.presentation.vms.HabitViewModel
 
@@ -49,6 +50,12 @@ fun ApplicationNavigation() {
             route = Screen.AddHabitScreen.route
         ) {
             AddHabitFragment(navController = navController, viewModel = viewModel)
+        }
+
+        this.composable(
+            route = Screen.EditHabitScreen.route
+        ) {
+            EditHabitScreen(navController = navController, viewModel = viewModel)
         }
     }
 }

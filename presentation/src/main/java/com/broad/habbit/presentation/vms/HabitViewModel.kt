@@ -2,6 +2,7 @@ package com.broad.habbit.presentation.vms
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.broad.habbit.data.HabitUseCaseImpl
@@ -12,6 +13,8 @@ import com.broad.habbit.domain.usecases.HabitUseCase
 
 class HabitViewModel: ViewModel(), HabitUseCase {
     var triggerMainFragment by mutableIntStateOf(0)
+    var editHabit by mutableStateOf<Habit?>(null)
+        private set
 
     override fun addHabit(newHabit: Habit) {
         HabitUseCaseImpl.addHabit(newHabit)
@@ -32,5 +35,6 @@ class HabitViewModel: ViewModel(), HabitUseCase {
         return HabitUseCaseImpl.getAllHabits()
     }
 
+    fun setEdit_Habit(habit: Habit) { editHabit = habit }
 
 }

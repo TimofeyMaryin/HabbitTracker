@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -24,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import com.broad.habbit.domain.entity.Habit
 import com.broad.habbit.domain.entity.HabitCategory
 import com.broad.habbit.presentation.theme.containerColor
+import com.broad.habbit.presentation.theme.green
 import com.broad.habbit.presentation.theme.red
 import com.broad.habbit.presentation.theme.white
 
@@ -31,6 +33,7 @@ import com.broad.habbit.presentation.theme.white
 fun HabitBlockByCategoryView(
     category: HabitCategory,
     habits: MutableList<Habit>,
+    onEdit: (Habit) -> Unit,
     onDel: (Habit) -> Unit
 ) {
 
@@ -54,7 +57,7 @@ fun HabitBlockByCategoryView(
 
             Column {
                 habits.forEach { habit ->
-                    HabitItem(habit = habit) {
+                    HabitItem(habit = habit, onEdit = { onEdit(habit) }) {
                         onDel(habit)
                     }
                 }
@@ -68,6 +71,7 @@ fun HabitBlockByCategoryView(
 @Composable
 private fun HabitItem(
     habit: Habit,
+    onEdit: () -> Unit,
     onDel: () -> Unit,
 ) {
 
@@ -84,13 +88,26 @@ private fun HabitItem(
                 AppText(value = habit.habitInitiation, size = TextSize.BODY_REGULAR, fontStyle = FontStyle.Italic, color = white.copy(.6f))
             }
 
-            IconButton(onClick = { onDel() }) {
-                Icon(
-                    imageVector = Icons.Default.Delete,
-                    contentDescription = null,
-                    tint = red,
-                    modifier = Modifier.size(35.dp)
-                )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                IconButton(onClick = { onEdit() }) {
+                    Icon(
+                        imageVector = Icons.Default.Edit,
+                        contentDescription = null,
+                        tint = green,
+                        modifier = Modifier.size(35.dp)
+                    )
+                }
+                IconButton(onClick = { onDel() }) {
+                    Icon(
+                        imageVector = Icons.Default.Delete,
+                        contentDescription = null,
+                        tint = red,
+                        modifier = Modifier.size(35.dp)
+                    )
+                }
             }
         }
     }

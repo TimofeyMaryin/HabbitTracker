@@ -65,17 +65,38 @@ fun AllTaskFragment(
         ) {
 
             item {
-                HabitBlockByCategoryView(category = HabitCategory.WORK, habits = habits.filterHabitByCategory(HabitCategory.WORK)) {
+                HabitBlockByCategoryView(
+                    category = HabitCategory.WORK,
+                    habits = habits.filterHabitByCategory(HabitCategory.WORK),
+                    onEdit = {
+                        viewModel.setEdit_Habit(it)
+                        navController.navigate(Screen.EditHabitScreen.route)
+                    }
+                ) {
                     viewModel.removeHabit(it)
                 }
             }
             item {
-                HabitBlockByCategoryView(category = HabitCategory.STUDY, habits = habits.filterHabitByCategory(HabitCategory.STUDY)) {
+                HabitBlockByCategoryView(
+                    category = HabitCategory.STUDY,
+                    habits = habits.filterHabitByCategory(HabitCategory.STUDY),
+                    onEdit = {
+                        viewModel.setEdit_Habit(it)
+                        navController.navigate(Screen.EditHabitScreen.route)
+                    }
+                ) {
                     viewModel.removeHabit(it)
                 }
             }
             item {
-                HabitBlockByCategoryView(category = HabitCategory.LESSON, habits = habits.filterHabitByCategory(HabitCategory.LESSON)) {
+                HabitBlockByCategoryView(
+                    category = HabitCategory.LESSON,
+                    habits = habits.filterHabitByCategory(HabitCategory.LESSON),
+                    onEdit = {
+                        viewModel.setEdit_Habit(it)
+                        navController.navigate(Screen.EditHabitScreen.route)
+                    }
+                ) {
                     viewModel.removeHabit(it)
                 }
             }
